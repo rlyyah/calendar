@@ -16,3 +16,13 @@ def cancel_the_meeting(schedule):
         print(err)
     schedule.pop(cancel_which)
     return schedule
+
+
+def menu():
+    is_running = True
+    while is_running:
+        # print menu
+        # wait for user input
+        # follow inputs instruction
+
+
