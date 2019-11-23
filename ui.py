@@ -8,3 +8,15 @@ def get_input(data_format, label):
 
 def print_result(message):
     print(message)
+
+
+def print_menu(menu_list):
+    
+    LABEL = 0
+    MENU = 1
+    EXIT = 2
+
+    print(menu_list[LABEL])
+    for option in menu_list[MENU]:
+        print(option)
+    print(menu_list[EXIT])
