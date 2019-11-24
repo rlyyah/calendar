@@ -20,3 +20,13 @@ def print_menu(menu_list):
     for option in menu_list[MENU]:
         print(option)
     print(menu_list[EXIT])
+
+def print_schedule(schedule):
+
+    DESC = 0
+    DURATION = 1
+    START_TIME = 2
+    
+    print('Your schedule for today')
+    for meeting in schedule:
+        print(f'{meeting[START_TIME]} - {int(meeting[START_TIME]) + int(DURATION)} {DESC}')
