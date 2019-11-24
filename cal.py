@@ -5,7 +5,7 @@ import storage
 def add_new_schedule(schedule):
 
     validation = True
-    
+
     while validation:
         new_meeting = ui.get_input(['meeting title', 'duration in hours', 'start time'], 'Schedule a new meeting')
         validation = validate_new_meeting(new_meeting)
@@ -31,17 +31,15 @@ def validate_new_meeting(meeting):
     DESC = 0
     DURATION = 1
     START_TIME = 2
-    validated = False
 
     try:
         int(meeting[DURATION])
         int(meeting[START_TIME])
-        validated = True
+        return False 
     except ValueError:
         print('Wrong format of ')
-        validated = False
+        return True
 
-    return validated
 
 def menu_stucture():
 
@@ -61,6 +59,7 @@ def menu_handler(instruction):
     file_name = 'schedule.csv'
     schedule = storage.read_calendar_file(file_name)
     save = storage.write_data_to_file
+
 
     if instruction == 's':
         # go to scheduling a meetin
