@@ -45,6 +45,7 @@ def menu_handler(instruction):
         pass
     elif instruction == 'c':
         # go to meeting cancelling
+        save(file_name, cancel_the_meeting(schedule))
         pass
     elif instruction == 'q':
         decision = False
