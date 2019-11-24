@@ -35,8 +35,13 @@ def menu_handler(instruction):
     FIRST_ELEMENT = 0
     instruction = instruction[FIRST_ELEMENT].lower()
     decision = True
+    file_name = 'schedule.csv'
+    schedule = storage.read_calendar_file(file_name)
+    save = storage.write_data_to_file
+
     if instruction == 's':
         # go to scheduling a meetin
+        save(file_name, add_new_schedule(schedule))
         pass
     elif instruction == 'c':
         # go to meeting cancelling
