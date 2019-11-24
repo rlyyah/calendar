@@ -60,6 +60,8 @@ def menu_handler(instruction):
     schedule = storage.read_calendar_file(file_name)
     save = storage.write_data_to_file
 
+    ui.clear_screen()
+    ui.print_schedule(schedule)
 
     if instruction == 's':
         # go to scheduling a meetin
@@ -80,6 +82,7 @@ def menu():
     is_running = True
     while is_running:
         # print menu
+        ui.clear_screen()
         ui.print_menu(menu_stucture())
         # wait for user input
         is_running = menu_handler(ui.get_input(['what would you like to do?\n'], ''))
