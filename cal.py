@@ -28,6 +28,18 @@ def menu_stucture():
     return [label, menu, exit_msg]
 
 
+def menu_handler(instruction):
+    instruction = instruction.lower()
+    if instruction == 's':
+        # go to scheduling a meetin
+    elif instruction == 'c':
+        # go to meeting cancelling
+    elif instruction == 'q':
+        return False
+    else:
+        ui.print_result('Command Unknown')
+    
+
 def menu():
     is_running = True
     while is_running:
