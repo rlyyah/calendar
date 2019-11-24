@@ -4,8 +4,14 @@ import storage
 
 def add_new_schedule(schedule):
 
-    new_meeting = ui.get_input(['meeting title', 'duration in hours', 'start time'], 'Schedule a new meeting')
+    validation = True
+    
+    while validation:
+        new_meeting = ui.get_input(['meeting title', 'duration in hours', 'start time'], 'Schedule a new meeting')
+        validation = validate_new_meeting(new_meeting)
+
     schedule.append(new_meeting)
+
     return schedule
 
 
@@ -19,6 +25,23 @@ def cancel_the_meeting(schedule):
     schedule.pop(cancel_which)
     return schedule
 
+
+def validate_new_meeting(meeting):
+
+    DESC = 0
+    DURATION = 1
+    START_TIME = 2
+    validated = False
+
+    try:
+        int(meeting[DURATION])
+        int(meeting[START_TIME])
+        validated = True
+    except ValueError:
+        print('Wrong format of ')
+        validated = False
+
+    return validated
 
 def menu_stucture():
 
@@ -35,11 +58,17 @@ def menu_handler(instruction):
     FIRST_ELEMENT = 0
     instruction = instruction[FIRST_ELEMENT].lower()
     decision = True
+    file_name = 'schedule.csv'
+    schedule = storage.read_calendar_file(file_name)
+    save = storage.write_data_to_file
+
     if instruction == 's':
         # go to scheduling a meetin
+        save(file_name, add_new_schedule(schedule))
         pass
     elif instruction == 'c':
         # go to meeting cancelling
+        save(file_name, cancel_the_meeting(schedule))
         pass
     elif instruction == 'q':
         decision = False
