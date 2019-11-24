@@ -4,8 +4,14 @@ import storage
 
 def add_new_schedule(schedule):
 
-    new_meeting = ui.get_input(['meeting title', 'duration in hours', 'start time'], 'Schedule a new meeting')
+    validation = True
+    
+    while validation:
+        new_meeting = ui.get_input(['meeting title', 'duration in hours', 'start time'], 'Schedule a new meeting')
+        validation = validate_new_meeting(new_meeting)
+
     schedule.append(new_meeting)
+
     return schedule
 
 
@@ -19,6 +25,23 @@ def cancel_the_meeting(schedule):
     schedule.pop(cancel_which)
     return schedule
 
+
+def validate_new_meeting(meeting):
+
+    DESC = 0
+    DURATION = 1
+    START_TIME = 2
+    validated = False
+
+    try:
+        int(meeting[DURATION])
+        int(meeting[START_TIME])
+        validated = True
+    except ValueError:
+        print('Wrong format of ')
+        validated = False
+
+    return validated
 
 def menu_stucture():
 
