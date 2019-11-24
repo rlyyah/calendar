@@ -30,3 +30,7 @@ def print_schedule(schedule):
     print('Your schedule for today')
     for meeting in schedule:
         print(f'{meeting[START_TIME]} - {int(meeting[START_TIME]) + int(DURATION)} {DESC}')
+
+def clear_screen():
+    print(chr(27) + "[2J")
+
